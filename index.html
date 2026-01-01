@@ -1,0 +1,127 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <title>- 3D carousel</title>  
+  <link rel="stylesheet" href="./style.css">  
+  <style>
+    /* Play Button Circle Style */
+    #playBtn {
+      position: fixed; 
+      bottom: 40px; 
+      right: 40px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%; 
+      background: radial-gradient(circle, #ff0040 0%, #b3002d 100%);
+      color: white; 
+      font-size: 32px;
+      border: none;
+      cursor: pointer;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(255,0,80,0.8), 0 0 30px rgba(255,0,80,0.5);
+      transition: all 0.3s ease-in-out;
+    }
+
+    #playBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255,0,80,1), 0 0 40px rgba(255,0,80,0.8);
+    }
+
+    /* Sanu... text fixed bottom-center */
+    #sanuText {
+      position: fixed;
+      bottom: 600px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 50px;
+      color: #ffccff;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ff007f, 0 0 20px #ff3399, 0 0 30px #ff66b2;
+      z-index: 2000;
+      animation: glow 2s infinite alternate;
+    }
+
+  /* music play text fixed bottom-center */
+    #playmusicText {
+      position: fixed;
+      bottom: 55px;
+      left: 40%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      color: #dfd5ff;
+      font-weight: 0;
+      text-shadow: 0;
+      z-index: 2000;
+      animation: glow s infinite alternate;
+    }
+    
+    
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff007f, 0 0 20px #ff3399; }
+      to { text-shadow: 0 0 20px #ff3399, 0 0 40px #ff66b2; }
+    }
+  </style>
+</head> 
+
+<body>  
+
+<div id="drag-container">  
+  <div id="spin-container">      
+
+    <img src="imgs/1.jpg" alt="">  
+    <img src="imgs/2.jpg" alt="">  
+    <img src="imgs/3.jpg" alt="">  
+    <img src="imgs/4.jpg" alt="">  
+    <img src="imgs/5.jpg" alt="">  
+    <img src="imgs/6.jpg" alt="">  
+    <img src="imgs/7.jpg" alt="">
+    <img src="imgs/8.jpg" alt="">
+     
+
+    <!-- Hidden video (optional) -->
+    
+
+    <!-- Audio -->
+    <audio id="bg-music" loop>
+      <source src="music/song.mp3" type="audio/mp3">
+    </audio>
+
+ <div id="music-container"></div></div> 
+ 
+  </div>  
+  <div id="ground"></div>  
+</div>  
+
+<!-- Circle Play Button -->
+<button id="playBtn">▶️</button>
+
+<p id="playmusicText">click to play music vedi...🤭→</p>
+
+
+<!-- Fixed Sanu Text -->
+<p id="sanuText">🌸 Sanu...🦋</p>
+
+<script>
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("playBtn");
+  let isPlaying = false;
+
+  btn.addEventListener("click", () => {
+    if (isPlaying) {
+      music.pause();
+      btn.textContent = "▶️"; // Play symbol
+    } else {
+      music.play();
+      btn.textContent = "⏸️"; // Pause symbol
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
+
+<script src="./script.js"></script>  
+</body>  
+</html>
